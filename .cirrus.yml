@@ -34,7 +34,6 @@ task:
       - sudo apt install -y aria2
       - aria2c --version
   install_pigz_scripts:
-      - sudo apt-get update -y
-      - sudo apt-get install -y pigz
+      - sudo apt install pigz
   upit_script:
       - bash upit
