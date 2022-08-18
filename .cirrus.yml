@@ -1,0 +1,18 @@
+env: # Environt variable to pass to all tasks
+    CIRRUS_CLONE_DEPTH: 1 # No need to clone with whole history
+    CIRRUS_WORKING_DIR: "/tmp/ci" # Where to clone repo
+    rclone_config: "ENCRYPTED[b974e2ce4e29573d13c32cd5af70db85f3343dc9faee6a2d335da66fce579e014509dd174d2c9d3372fe9cdb57db9368]"
+task:
+    name: Buildbouuut
+    timeout_in: 122m
+    container:
+      image: ubuntu:20.04
+      cpu: 8
+      memory: 30G   
+      - sudo apt-get update
+      - sudo apt-get install git -y
+      - git clone https://github.com/akhilnarang/scripts
+      - cd scripts
+      - bash setup/android_build_env.sh
+      - repo init -u https://github.com/Havoc-OS/android_manifest.git -b eleven
+      - repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
