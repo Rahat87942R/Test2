@@ -9,6 +9,14 @@ task:
       image: ubuntu:latest
       cpu: 8
       memory: 32G
+  install_git:
+      - export DEBIAN_FRONTEND=noninteractive
+      - apt update
+      - apt install sudo
+      - df -h
+      - DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends tzdata
+      - ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
+      - sudo apt-get install git -y
   install_rclone_script: 
       - curl https://rclone.org/install.sh | sudo bash
       - curl -O https://downloads.rclone.org/rclone-current-linux-amd64.zip
@@ -24,12 +32,6 @@ task:
   download_ccache_script:
       - bash download_ccache
   Setup_script:
-      - export DEBIAN_FRONTEND=noninteractive
-      - apt update
-      - apt install sudo
-      - df -h
-      - DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends tzdata
-      - ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
       - sudo apt-get install git -y
       - git clone https://github.com/akhilnarang/scripts
       - cd scripts
