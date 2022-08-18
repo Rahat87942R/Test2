@@ -1,7 +1,7 @@
 env: # Environt variable to pass to all tasks
     CIRRUS_CLONE_DEPTH: 1 # No need to clone with whole history
     CIRRUS_WORKING_DIR: "/tmp/ci" # Where to clone repo
-    rclone_config: "ENCRYPTED[fc7c8110f8d1a43aadee340ed2e2924374b2548502521f6c77b7732cca4e6c0c1969a4cae1d3a4096bfac0fa164668f2]"
+    rclone_config: "ENCRYPTED[b84b9d1feb4d5fdcd2c88953a32fb1f39c0ad2301cd2f3ede0f1d04f54a7184c340f624214821ca909ec209683d6f67a]"
 task:
   name: "CIRRUS SSH"
   timeout_in: 960m  
@@ -35,8 +35,8 @@ task:
       - sudo apt-get install -y pigz
   download_ccache_script:
       - bash download_ccache
-  Sync_script:
-      - repo init -u https://github.com/Havoc-OS/android_manifest.git -b eleven
-      - repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
+#  Sync_script:
+#      - repo init -u https://github.com/Havoc-OS/android_manifest.git -b eleven
+#      - repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
   upit_script:
       - bash upit
