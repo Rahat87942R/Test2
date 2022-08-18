@@ -29,10 +29,6 @@ task:
       - curl -O https://downloads.rclone.org/rclone-current-linux-amd64.zip
       - unzip rclone-current-linux-amd64.zip
       - cd rclone-*-linux-amd64
-  install_aria2_script:
-      - sudo apt update
-      - sudo apt install -y aria2
-      - aria2c --version
   install_pigz_scripts:
       - sudo apt install pigz
   upit_script:
