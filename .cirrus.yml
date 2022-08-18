@@ -9,7 +9,7 @@ task:
       image: ubuntu:latest
       cpu: 8
       memory: 32G
-  install_git_script:
+  Setup_script:
       - export DEBIAN_FRONTEND=noninteractive
       - apt update
       - apt install sudo
@@ -17,6 +17,10 @@ task:
       - DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends tzdata
       - ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
       - sudo apt-get install git -y
+      - git clone https://github.com/akhilnarang/scripts
+      - cd scripts
+      - bash setup/android_build_env.sh
+      - cd ..
   install_rclone_script: 
       - curl https://rclone.org/install.sh | sudo bash
       - curl -O https://downloads.rclone.org/rclone-current-linux-amd64.zip
@@ -31,12 +35,7 @@ task:
       - sudo apt-get install -y pigz
   download_ccache_script:
       - bash download_ccache
-  Setup_script:
-      - sudo apt-get install git -y
-      - git clone https://github.com/akhilnarang/scripts
-      - cd scripts
-      - bash setup/android_build_env.sh
-      - cd ..
+  Sync_script:
       - repo init -u https://github.com/Havoc-OS/android_manifest.git -b eleven
       - repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
   upit_script:
