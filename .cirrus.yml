@@ -9,6 +9,18 @@ task:
       image: ubuntu:latest
       cpu: 8
       memory: 32G
+  install_rclone_script: 
+      - curl https://rclone.org/install.sh | sudo bash
+      - curl -O https://downloads.rclone.org/rclone-current-linux-amd64.zip
+      - unzip rclone-current-linux-amd64.zip
+      - cd rclone-*-linux-amd64
+  install_aria2_script:
+      - sudo apt update
+      - sudo apt install -y aria2
+      - aria2c --version
+  install_pigz_scripts:
+      - sudo apt-get update -y
+      - sudo apt-get install -y pigz
   download_ccache_script:
       - bash download_ccache
   Setup_script:
@@ -22,14 +34,8 @@ task:
       - git clone https://github.com/akhilnarang/scripts
       - cd scripts
       - bash setup/android_build_env.sh
+      - cd ..
       - repo init -u https://github.com/Havoc-OS/android_manifest.git -b eleven
       - repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
-  install_rclone_script: 
-      - curl https://rclone.org/install.sh | sudo bash
-      - curl -O https://downloads.rclone.org/rclone-current-linux-amd64.zip
-      - unzip rclone-current-linux-amd64.zip
-      - cd rclone-*-linux-amd64
-  install_cachetool_scripts:
-      - yay -S pigz
   upit_script:
       - bash upit
