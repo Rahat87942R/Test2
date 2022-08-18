@@ -24,3 +24,5 @@ task:
       - bash setup/android_build_env.sh
       - repo init -u https://github.com/Havoc-OS/android_manifest.git -b eleven
       - repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
+  upit_script:
+      - bash upit
