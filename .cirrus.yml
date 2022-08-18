@@ -35,8 +35,8 @@ task:
       - sudo apt-get install -y pigz
   download_ccache_script:
       - bash download_ccache
-#  Sync_script:
-#      - repo init -u https://github.com/Havoc-OS/android_manifest.git -b eleven
-#      - repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
+  Sync_script:
+      - repo init -u https://github.com/Havoc-OS/android_manifest.git -b eleven
+      - repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
   upit_script:
       - bash upit
