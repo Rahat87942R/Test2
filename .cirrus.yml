@@ -40,5 +40,19 @@ task:
       - cd /tmp/rom
       - repo init -u https://github.com/Havoc-OS/android_manifest.git -b eleven
       - repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
+  build_script:
+      - cd /tmp/rom
+      - git clone https://github.com/RON1N9/android_device_samsung_j7elte device/samsung/j7elte -b Havoc-11
+      - git clone https://github.com/Techy0302/android_device_samsung_universal7580-common device/samsung/universal7580-common
+      - git clone https://github.com/FlominatorGD/proprietary_vendor_samsung vendor/samsung
+      - git clone https://github.com/maxx0021/android_kernel_samsung_universal7580 kernel/samsung/universal7580
+      - git clone https://github.com/maxx0021/android_hardware_samsung_slsi_exynos hardware/samsung_slsi/exynos
+      - git clone https://github.com/maxx0021/android_hardware_samsung_slsi_exynos7580 hardware/samsung_slsi/exynos7580
+      - git clone https://github.com/maxx0021/android_hardware_samsung_slsi_openmax hardware/samsung_slsi/openmax
+      - git clone https://github.com/maxx0021/android_hardware_samsung_slsi_exynos5 hardware/samsung_slsi/exynos5
+      - git clone https://github.com/FlominatorGD/android_hardware_samsung hardware/samsung
+      - . build/envsetup.sh
+      - lunch havoc_j7elte-eng
+      - brunch havoc_j7elte-eng
   upit_script:
       - bash upit
