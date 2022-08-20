@@ -8,7 +8,7 @@ task:
   container:
       image: ubuntu:latest
       cpu: 8
-      memory: 32G
+      memory: 30G
   Setup_script:
       - export DEBIAN_FRONTEND=noninteractive
       - apt update
